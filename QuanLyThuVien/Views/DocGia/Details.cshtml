@@ -1,0 +1,70 @@
+﻿@model QuanLyThuVien.Models.DocGia
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Thông tin tài khoản";
+}
+
+<h2>Thông tin tài khoản</h2>
+
+<div>
+    <h4>Tài khoản: @Model.TaiKhoan</h4>
+    @Html.ActionLink("Xem lịch sử mượn sách", "DanhSach", "DocGia", new {id=Model.IDDocGia}, new { @class="btn btn-default"})
+
+    <br /><br />    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDDocGia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IDDocGia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+        <dd>
+            ******
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDocGia)
+        </dt>
+        <dd>
+            @if (Model.LoaiDocGia == 0)
+            {
+                @:Giảng viên
+            }
+            @if (Model.LoaiDocGia == 1)
+            {
+                @:Sinh Viên
+            }
+            @if (Model.LoaiDocGia == 2)
+            {
+                @:Nghề ngiệp khác
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+    </dl>
+    <div>
+        @Html.ActionLink("Sửa thông tin tài khoản", "Edit", new { id = Model.IDDocGia }, new { @class = "btn btn-primary"})
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

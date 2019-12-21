@@ -1,0 +1,96 @@
+﻿@model IEnumerable<QuanLyThuVien.ViewModels.viewMuonSach>
+
+@{
+    ViewData["Title"] = "Danh sách mượn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Các sách đã mượn</h2>
+
+@if (ViewBag.Result == null)
+{
+    <h4>Không xem được danh sách của người khác đâu nha :)</h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Mã phiếu
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenDocGia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenSach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenNhanVien)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TenChiNhanh)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhiMuon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TienCoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NgayMuon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrangThai)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Result)
+            {
+                <tr>
+                    <td>
+                        @item.IDPhieu
+                    </td>
+                    <td>
+                        @item.TenDocGia
+                    </td>
+                    <td>
+                        @item.TenSach
+                    </td>
+                    <td>
+                        @item.TenNhanVien
+                    </td>
+                    <td>
+                        @item.TenChiNhanh
+                    </td>
+                    <td>
+                        @item.PhiMuon
+                    </td>
+                    <td>
+                        @item.TienCoc
+                    </td>
+                    <td>
+                        @item.NgayMuon
+                    </td>
+                    <td>
+                        @if (item.TrangThai == 0)
+                        {
+                            @:Đã đặt sách
+                        }
+                        @if (item.TrangThai == 1)
+                        {
+                            @:Đang mượn sách
+                        }
+                        @if (item.TrangThai == 2)
+                        {
+                            @:Đã trả sách
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

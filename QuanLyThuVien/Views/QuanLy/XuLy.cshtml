@@ -1,0 +1,118 @@
+﻿@model IEnumerable<QuanLyThuVien.ViewModels.viewMuonSach>
+
+@{
+    ViewData["Title"] = "Xử lý mượn sách";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Xử lý mượn trả sách</h2>
+<br />
+
+    <br />
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDPhieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDocGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiDocGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNhanVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenChiNhanh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhiMuon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TienCoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayMuon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDPhieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDocGia)
+                </td>
+                <td>
+                    @if (item.LoaiDocGia == 0)
+                    {
+                        @:Giảng Viên
+                    }
+                    @if (item.LoaiDocGia == 1)
+                    {
+                        @:Sinh Viên
+                    }
+                    @if (item.LoaiDocGia == 1)
+                    {
+                        @:Độc giả khác
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNhanVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenChiNhanh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrangSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhiMuon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TienCoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayMuon)
+                </td>
+                <td>
+                    @if (item.TrangThai == 0)
+                    {
+                        @:Đã đặt sách
+                    }
+                    @if (item.TrangThai == 1)
+                    {
+                        @:Đang mượn sách
+                    }
+                </td>
+                <td>
+                    @if (item.TrangThai == 0)
+                    {
+                        @Html.ActionLink("Giao sách", "GiaoSach", "QuanLy", new { id = item.IDPhieu }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IDPhieu }, new { @class = "btn btn-primary" })
+                    }
+                    @if (item.TrangThai == 1)
+                    {
+                        @Html.ActionLink("Nhận sách", "NhanSach", "QuanLy", new { id = item.IDPhieu }, new { @class = "btn btn-primary" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

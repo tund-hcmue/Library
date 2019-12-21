@@ -1,0 +1,45 @@
+﻿@model QuanLyThuVien.Models.SachChiNhanh
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Thêm sách";
+}
+
+<h2>Thêm sách vào thư viện</h2>
+
+<h4>Tại chi nhánh: @ViewBag.TenChiNhanh</h4>
+<hr /> <br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="themSach">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IDChiNhanh" class="control-label"></label>
+                <input asp-for="IDChiNhanh" class="form-control" value="@ViewBag.IDChiNhanh" />
+                <span asp-validation-for="IDChiNhanh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDSach" class="control-label"></label>
+                <input asp-for="IDSach" class="form-control" value="@ViewBag.IDSach" />
+                <span asp-validation-for="IDSach" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tên sách</label>
+                <input class="form-control" value="@ViewBag.TenSach" />
+            </div>
+            <div class="form-group">
+                <label asp-for="TongSoLuong" class="control-label"></label>
+                <input asp-for="TongSoLuong" class="form-control" />
+                <span asp-validation-for="TongSoLuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm sách" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

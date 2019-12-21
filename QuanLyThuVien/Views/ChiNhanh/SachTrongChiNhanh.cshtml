@@ -1,0 +1,111 @@
+﻿@model IEnumerable<QuanLyThuVien.ViewModels.viewSach>
+
+@{
+    ViewData["Title"] = "Sách đang có";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Sách trong chi nhánh @ViewBag.TenChiNhanh</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IDSach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TacGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhaXuatBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamXuatBan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoTrang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayNhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.XepHangTb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoDanhGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongSoSach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoSachCon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TacGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NhaXuatBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamXuatBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoTrang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayNhap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.XepHangTb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDanhGia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TongSoSach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoSachCon)
+                </td>
+            </tr>
+            <script>
+                function myFunction() {
+                    var dots = document.getElementById("dots");
+                    var moreText = document.getElementById("more");
+                    var btnText = document.getElementById("myBtn");
+
+                    if (dots.style.display === "none") {
+                        dots.style.display = "inline";
+                        btnText.innerHTML = "Read more";
+                        moreText.style.display = "none";
+                    } else {
+                        dots.style.display = "none";
+                        btnText.innerHTML = "Read less";
+                        moreText.style.display = "inline";
+                    }
+                }
+            </script>
+        }
+    </tbody>
+</table>
